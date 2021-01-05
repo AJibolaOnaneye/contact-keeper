@@ -1,5 +1,6 @@
 const express = require('express');
 const connectDB = require('./config/db')
+const path = require('path')
 
 const app = express();
 
@@ -10,7 +11,7 @@ connectDB()
 app.use(express.json({ extended: false }))
 
 app.get('/', (req, res) => {
-    res.send({ msg: 'Welcome to the contact api' })
+   
 });
 
 // Define Routes
@@ -27,7 +28,7 @@ if (process.env.NODE_ENV === "production") {
   
     // index.html for all page routes    html or routing and naviagtion
     app.get("*", (req, res) => {
-      res.sendFile(path.resolve(__dirname, "../client/build","index.html"));
+      res.sendFile(path.resolve(__dirname, "client","build","index.html"));
     });
   }
   
